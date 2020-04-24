@@ -36,31 +36,31 @@
 
 <template>
     <div class="register-login-con">
-       <div class="login-con">
+        <div class="login-con">
             <div class="username-con">
-                <input type="text" placeholder="username">
+                <input placeholder="username" type="text">
             </div>
-           <div class="username-con">
-               <input type="text" placeholder="password">
-           </div>
-       </div>
+            <div class="username-con">
+                <input placeholder="password" type="text">
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
-    export default {
-        name: 'login',
+	export default {
+		name: 'login',
 
-        data() {
-            return {
-                div_with: '200px'
-            }
-        },
+		data() {
+			return {
+				div_with: '200px'
+			}
+		},
 
-        mounted() {
+		mounted() {
 
-        }
-    }
+		}
+	}
 </script>
 
 
