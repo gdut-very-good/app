@@ -18,6 +18,7 @@
         width: 80%;
         margin-left: 10%;
         margin-bottom: 30px;
+        background-color: #00B4FF;
     }
 
     .username-con input {
@@ -28,51 +29,7 @@
         text-align: center;
         border: 0;
         outline: none;
-        font-size: 40px;
-        background-color: transparent;
-        border-bottom: 1px solid #f2e2e2;
-        color: white;
     }
-
-    .submit {
-        height: 100px;
-        width: 60%;
-        border-radius: 80px;
-        margin-left: 20%;
-        margin-top: 100px;
-        background-color: rgb(234,204,32);
-        line-height: 100px;
-        text-align: center;
-        font-size: 40px;
-        color: white;
-    }
-
-    .background-image {
-        position: absolute;
-        height: 100%;
-        width: 100%;
-    }
-
-    .app-logo {
-        position: absolute;
-        height: 200px;
-        width: 200px;
-        top: 10%;
-        border-radius: 50%;
-        background-color: #00B4FF;
-        left: calc(50% - 100px);
-    }
-
-    .register-notice {
-        position: absolute;
-        bottom: 100px;
-        height: 30px;
-        width: 100%;
-        text-align: center;
-        font-size: 40px;
-        color: #bcb0b0;
-    }
-
 
 
 </style>
