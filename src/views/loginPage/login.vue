@@ -1,10 +1,14 @@
-<style scoped>
+<style scoped lang="less">
+    @import "../../utils/css/mixin";
     .register-login-con {
         height: 100vh;
-        background-color: red;
-        background-image: url("http://printer.noerror.xyz/appImage/username.png");
-        background-repeat: no-repeat;
-        background-size: 100%;
+    }
+
+    .app-logo {
+        .absolute(200px, 200px);
+        border-radius: 50%;
+        background-color: #00B4FF;
+        top: 10%;
     }
 
     .login-con {
@@ -14,16 +18,23 @@
     }
 
     .username-con {
+        .placeholderColor(white);
         height: 100px;
         width: 80%;
         margin-left: 10%;
         margin-bottom: 30px;
-        background-color: #00B4FF;
+        border-bottom: 1px solid #dcd5d5;
+        font-size: 0;
+
+        .login-icon {
+            float: left;
+            height: 70px;
+            width: 70px;
+        }
     }
 
     .username-con input {
-        display: inline-block;
-        vertical-align: top;
+        background-color: transparent;
         height: 100%;
         width: 100%;
         text-align: center;
@@ -31,17 +42,37 @@
         outline: none;
     }
 
+    .backgroundImage {
+        .absolute(100%,100%);
+        filter: blur(5px);
+    }
+
+    .submit {
+        .absolute(100px, 60%);
+        line-height: 100px;
+        text-align: center;
+        font-size: 40px;
+        top: 45%;
+        background-color: yellowgreen;
+        border-radius: 100px;
+        color: white;
+    }
+
+    .register-notice {
+        .absolute(auto, 50%);
+        bottom: 50px;
+        text-align: center;
+        color: white;
+    }
 
 </style>
 
 <template>
     <div class="register-login-con">
-        <image class="background-image" src="http://printer.noerror.xyz/appImage/background.png"></image>
+        <image class="backgroundImage" src="http://printer.noerror.xyz/appImage/background.png"></image>
         <div class="app-logo"></div>
         <div class="login-con">
-            <image src="http://printer.noerror.xyz/appImage/background.png"></image>
             <div class="username-con">
-
                 <input type="text" placeholder="username">
             </div>
             <div class="username-con">

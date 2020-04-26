@@ -5,6 +5,10 @@ import Index from "@/views/IndexPage/Index";
 
 Vue.use(Router);
 
+const ysyRouter = {
+
+}
+
 export const router = new Router({
 	routes: [
 		{
