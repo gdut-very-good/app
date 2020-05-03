@@ -15,9 +15,42 @@
         width: 80%;
         margin-left: 10%;
         margin-top: 54%;
+
+        .submit {
+            height: 100px;
+            width: 80%;
+            margin: 40px 10% 0 10%;
+            line-height: 100px;
+            text-align: center;
+            font-size: 40px;
+            background-color: yellowgreen;
+            border-radius: 100px;
+            color: white;
+        }
+    }
+
+    .register-con {
+        width: 80%;
+        margin-left: 10%;
+        margin-top: 54%;
+
+        .sign-up {
+            height: 100px;
+            width: 80%;
+            margin: 40px 10% 0 10%;
+            line-height: 100px;
+            text-align: center;
+            font-size: 40px;
+            background-color: yellowgreen;
+            border-radius: 100px;
+            color: white;
+        }
+
+
     }
 
     .username-con {
+        position: relative;
         .placeholderColor(white);
         height: 100px;
         width: 80%;
@@ -26,10 +59,19 @@
         border-bottom: 1px solid #dcd5d5;
         font-size: 0;
 
-        .login-icon {
-            float: left;
+        .user-icon {
+            position: absolute;
             height: 70px;
             width: 70px;
+            left: 0;
+            bottom: 15px;
+        }
+
+        div {
+            position: relative;
+            height: 100%;
+            width: calc(100% - 90px);
+            padding-left: 90px;
         }
     }
 
@@ -37,25 +79,13 @@
         background-color: transparent;
         height: 100%;
         width: 100%;
-        text-align: center;
         border: 0;
         outline: none;
     }
 
     .backgroundImage {
         .absolute(100%,100%);
-        filter: blur(5px);
-    }
-
-    .submit {
-        .absolute(100px, 60%);
-        line-height: 100px;
-        text-align: center;
-        font-size: 40px;
-        top: 45%;
-        background-color: yellowgreen;
-        border-radius: 100px;
-        color: white;
+        filter: blur(3px);
     }
 
     .register-notice {
@@ -71,16 +101,43 @@
     <div class="register-login-con">
         <image class="backgroundImage" src="http://printer.noerror.xyz/appImage/background.png"></image>
         <div class="app-logo"></div>
-        <div class="login-con">
+        <div class="login-con" v-if="logShow">
             <div class="username-con">
-                <input type="text" placeholder="username">
+                <image src="http://printer.noerror.xyz/appImage/username.png" class="user-icon"></image>
+                <div>
+                    <input type="text" placeholder="username">
+                </div>
             </div>
             <div class="username-con">
-                <input type="text" placeholder="password">
+                <image src="http://printer.noerror.xyz/appImage/password.png" class="user-icon"></image>
+                <div>
+                    <input type="text" placeholder="password">
+                </div>
             </div>
+            <div class="submit" @click="toIndex">Log in</div>
         </div>
-        <div class="submit">Log in</div>
-        <div class="register-notice">New here?Sign Up</div>
+        <div class="register-con" v-if="!logShow">
+            <div class="username-con">
+                <image src="http://printer.noerror.xyz/appImage/username.png" class="user-icon"></image>
+                <div>
+                    <input type="text" placeholder="username">
+                </div>
+            </div>
+            <div class="username-con">
+                <image src="http://printer.noerror.xyz/appImage/password.png" class="user-icon"></image>
+                <div>
+                    <input type="text" placeholder="password">
+                </div>
+            </div>
+            <div class="username-con">
+                <image src="http://printer.noerror.xyz/appImage/password.png" class="user-icon"></image>
+                <div>
+                    <input type="text" placeholder="confirmPassword">
+                </div>
+            </div>
+            <div class="sign-up">Sign Up</div>
+        </div>
+        <div class="register-notice" @click="logShow=!logShow">New here?Sign Up</div>
     </div>
 </template>
 
@@ -90,12 +147,20 @@
 
         data() {
             return {
-                div_with: '200px'
+                logShow: true
             }
         },
 
         mounted() {
 
+        },
+
+        methods: {
+            toIndex() {
+                console.log(this.$router)
+                console.log('niaho')
+                this.$router.push({ name: "userInfoPage" });
+            }
         }
     }
 </script>

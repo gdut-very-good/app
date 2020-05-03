@@ -21,6 +21,78 @@
 }
 
 .inline {
-  display: inline-block;
+  display: inline;
   vertical-align: top;
+}
+
+//title样式
+.title {
+  @height: 1.5rem;
+  height: @height;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  font-size: 0.5rem;
+  border-bottom: 1px solid gray;
+}
+
+//图片样式
+.image(@height, @width) {
+  height: @height;
+  width: @width;
+}
+
+//我的列表公共样式
+.list-item {
+  @height: 1.5rem;
+  @fontSize: 0.4rem;
+  position: relative;
+  background-color: white;
+  padding-left: 20px;
+  width: 100%;
+  height: @height;
+
+  .left-bar {
+    height: 100%;
+
+    .head-image {
+      position: absolute;
+      left: 0.2rem;
+      height: 1.5rem;
+      width: 1.5rem;
+    }
+
+    .left-bar-content {
+      left: 1.7rem;
+      height: 100%;
+      line-height: @height;
+      font-size: @fontSize;
+    }
+  }
+
+  .right-bar {
+    position: absolute;
+    right: 0.3rem;
+    height: 100%;
+    width: 20%;
+    text-align: right;
+
+    .right-bar-content {
+      position: absolute;
+      right: 0.6rem;
+      height: 100%;
+      line-height: 1.5rem;
+      font-size :@fontSize;
+      color: rgb(213,213,213);
+    }
+    .right-arrow {
+      width: 0.6rem;
+      position: absolute;
+      right: 0;
+      top: 0.45rem;
+      height: 0.6rem;
+      line-height: 1.5rem;
+    }
+  }
 }
