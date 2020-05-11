@@ -8,6 +8,7 @@ import userInfo from "@/views/IndexPage/userInfoPage/userInfo";
 import draftPage from "@/views/IndexPage/draftPage/draftPage";
 import IslandPage from "@/views/IndexPage/islandPage/IslandPage";
 import IslandDefault from "@/views/IndexPage/islandPage/IslandDetail/IslandDetail";
+import PostDetail from "@/views/IndexPage/islandPage/IslandDetail/postDetail/PostDetail";
 
 Vue.use(Router);
 
@@ -19,8 +20,8 @@ export const router = new Router({
 	routes: [
 		{
 			path: '/',
-			name: 'IslandDetail',
-			component: IslandDefault
+			name: 'PostDetail',
+			component: PostDetail
 		},
 		{
 		    path: '/index',
