@@ -1,0 +1,37 @@
+@px2rem : 1 / 54rem;
+@paddingHor : 10;
+@paddingHorPx : 10px;
+.IslandDetailView {
+    .header {
+        .bg {
+            height: 300 * @px2rem;
+            width: 100%;
+
+        }
+        .container {
+            height: 100 * @px2rem;
+            .avatar-box {
+                .avatar {
+                    width: 120 * @px2rem;
+                    height: 120 * @px2rem;
+                }
+                position: relative;
+                transform: translateY(-60 * @px2rem);
+                .name {
+                    margin-top: 5 * @px2rem;
+                    font-size: 26 * @px2rem;
+                    padding-left: 10 * @px2rem;
+                }
+            }
+            .content {
+                position: absolute;
+                top: 30 * @px2rem;
+                right: @paddingHor * @px2rem;
+                transform: translateY(-50%);
+            }
+        }
+    }
+    .body {
+        padding: 0 @paddingHorPx;
+    }
+}

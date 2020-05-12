@@ -1,6 +1,5 @@
 <style scoped>
 </style>
-
 <template>
     <div>
         <router-view/>

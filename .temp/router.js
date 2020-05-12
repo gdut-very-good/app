@@ -8,6 +8,10 @@ import userInfo from "@/views/IndexPage/userInfoPage/userInfo";
 import stamp from "@/views/IndexPage/userInfoPage/stamp/stamp";
 import writeLetter from "@/views/IndexPage/writeLetter/writeLetter";
 import changeInfo from "@/views/IndexPage/userInfoPage/set/changeInfo/changeInfo";
+import draftPage from "@/views/IndexPage/draftPage/draftPage";
+import IslandPage from "@/views/IndexPage/islandPage/IslandPage";
+import IslandDefault from "@/views/IndexPage/islandPage/IslandDetail/IslandDetail";
+import PostDetail from "@/views/IndexPage/islandPage/IslandDetail/postDetail/PostDetail";
 
 Vue.use(Router);
 
@@ -49,6 +53,11 @@ export const router = new Router({
 					name: 'stamp',
 					component: stamp
 				},
+				{
+					path : 'draftPage',
+					name : 'draftPage',
+					component : draftPage
+				}
 			]
         }
 	]
