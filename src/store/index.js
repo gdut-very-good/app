@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import user from "@/store/modules/user";
 
 // 需要提供install方法
 Vue.use(Vuex);
@@ -11,6 +12,7 @@ export default new Vuex.Store({
 	mutations: {},
 	actions: {},
 	modules: {
+        user,
 		student : {
 			state : {
 				id : 1,

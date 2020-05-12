@@ -81,6 +81,8 @@
         width: 100%;
         border: 0;
         outline: none;
+        font-size: 0.5rem;
+        color: white;
     }
 
     .backgroundImage {
@@ -89,10 +91,11 @@
     }
 
     .register-notice {
-        .absolute(auto, 50%);
+        .absolute(auto, 70%);
         bottom: 50px;
         text-align: center;
         color: white;
+        font-size: 0.6rem;
     }
 
 </style>
@@ -105,13 +108,13 @@
             <div class="username-con">
                 <image src="http://printer.noerror.xyz/appImage/username.png" class="user-icon"></image>
                 <div>
-                    <input type="text" placeholder="username">
+                    <input type="text" placeholder="username" v-model="log.username">
                 </div>
             </div>
             <div class="username-con">
                 <image src="http://printer.noerror.xyz/appImage/password.png" class="user-icon"></image>
                 <div>
-                    <input type="text" placeholder="password">
+                    <input type="text" placeholder="password" v-model="log.password">
                 </div>
             </div>
             <div class="submit" @click="toIndex">Log in</div>
@@ -120,46 +123,85 @@
             <div class="username-con">
                 <image src="http://printer.noerror.xyz/appImage/username.png" class="user-icon"></image>
                 <div>
-                    <input type="text" placeholder="username">
+                    <input type="text" placeholder="username" v-model="sign.username">
                 </div>
             </div>
             <div class="username-con">
                 <image src="http://printer.noerror.xyz/appImage/password.png" class="user-icon"></image>
                 <div>
-                    <input type="text" placeholder="password">
+                    <input type="text" placeholder="password" v-model="sign.password">
                 </div>
             </div>
-            <div class="username-con">
-                <image src="http://printer.noerror.xyz/appImage/password.png" class="user-icon"></image>
-                <div>
-                    <input type="text" placeholder="confirmPassword">
-                </div>
-            </div>
-            <div class="sign-up">Sign Up</div>
+<!--            <div class="username-con">-->
+<!--                <image src="http://printer.noerror.xyz/appImage/password.png" class="user-icon"></image>-->
+<!--                <div>-->
+<!--                    <input type="text" placeholder="confirmPassword" v-model="sign.confirm">-->
+<!--                </div>-->
+<!--            </div>-->
+            <div class="sign-up" @click="signUp">Sign Up</div>
         </div>
         <div class="register-notice" @click="logShow=!logShow">New here?Sign Up</div>
     </div>
 </template>
 
 <script>
+    import {loginModules} from "@/utils/apiManager/loginApi";
+
     export default {
         name: 'login',
 
         data() {
             return {
-                logShow: true
+                logShow: true,
+                log: {
+                    username: '',
+                    password: ''
+                },
+                sign: {
+                    username: '',
+                    password: '',
+                    confirm: ''
+                }
             }
         },
 
         mounted() {
-
         },
 
         methods: {
             toIndex() {
-                console.log(this.$router)
-                console.log('niaho')
-                this.$router.push({ name: "userInfoPage" });
+                let data = {
+                    username: this.log.username,
+                    password: this.log.password
+                }
+                loginModules.login(data).then(res => {
+                    console.log(res.data)
+                    if (res.code == 1) {
+                        this.$store.default.commit('updateUserState', res.data)
+                        this.$router.push({
+                            name: 'userInfo'
+                        })
+                    }
+                    alert(res.message)
+                })
+            },
+
+            signUp() {
+                const data = {
+                    "username":"jackson",
+                    "password": this.sign.password,
+                    "mail": this.sign.username,
+                    "nickname":"你好",
+                    "signature":"尽信书，不如无书",
+                    "city":"广州市"
+                }
+                loginModules.register(data).then(res => {
+                    if (res.code == 1) {
+                        alert(res.message)
+                    } else {
+                        alert(res.message)
+                    }
+                })
             }
         }
     }

@@ -30,21 +30,24 @@
             }
 
             .middle-bar {
+                @margin: 0.2rem;
                 line-height:  @height;
                 width: 70%;
 
                 .user-name {
-                    height: 50%;
+                    height: calc(50% - @margin);
                     width: 100%;
                     line-height: @height / 2;
                     font-size: 0.4rem;
+                    margin-top: 0.2rem;
                 }
 
                 .user-letter {
-                    height: 50%;
+                    height: calc(50% - @margin);
                     width: 100%;
                     line-height: @height / 2;
                     font-size: 0.4rem;
+                    margin-bottom: 0.2rem;
                 }
             }
 
@@ -110,23 +113,26 @@
     <div class="userInfo-container">
         <div class="userInfo-title">我的</div>
         <div class="bottom-con">
-            <div class="head-con">
+            <div class="head-con" @click="jump('set')">
                 <div class="left-bar">
                     <image src="http://printer.noerror.xyz/appImage/head-icon.png" class="head-image"></image>
                 </div>
                 <div class="middle-bar">
-                    <div class="user-name">李华</div>
+                    <div class="user-name">{{name}}</div>
                     <div class="user-letter">今天写信了吗</div>
                 </div>
                 <div class="right-bar">
                     <image src="http://printer.noerror.xyz/appImage/right_arrow.png" class="right-arrow"></image>
                 </div>
-
             </div>
 
-            <div class="list-item-info" v-for="item in listItem" v-key="index">
+            <div class="list-item-info"
+                 v-for="item in listItem"
+                 :key="item.name"
+                 @click="jump(item.module)"
+            >
                 <div class="left-bar">
-                    <image src="http://printer.noerror.xyz/appImage/message.png" class="head-image"></image>
+                    <image :src="item.imageUrl" class="head-image"></image>
                 </div>
                 <div class="middle-bar">
                     <div class="content">{{item.name}}</div>
@@ -140,22 +146,40 @@
 </template>
 
 <script>
+    import {mapState, mapGetters} from "vuex";
+
     export default {
         name: 'userInfo',
+
+        computed: {
+            name() {
+                return this.$store.default.state.user.username
+            }
+
+
+        },
 
         data() {
             return {
                 listItem: [
                     {
                         name: '消息',
+                        module: 'message',
                         imageUrl: 'http://printer.noerror.xyz/appImage/message.png'
                     },
                     {
                         name: '我的邮票',
+                        module: 'stamp',
                         imageUrl: 'http://printer.noerror.xyz/appImage/data.png'
                     },
                     {
                         name: '设置',
+                        module: 'message',
+                        imageUrl: 'http://printer.noerror.xyz/appImage/set.png'
+                    },
+                    {
+                        name: '注销',
+                        module: 'message',
                         imageUrl: 'http://printer.noerror.xyz/appImage/set.png'
                     },
                 ]
@@ -163,8 +187,19 @@
         },
 
         mounted() {
+            console.log(this.$store.default)
+            this.$store.default.state.count =  2
+        },
 
+        methods: {
+            jump(moduleName) {
+                this.$router.push({
+                    name: moduleName
+                })
+            }
         }
+
+
     }
 </script>
 
