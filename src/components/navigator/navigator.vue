@@ -12,7 +12,7 @@
         background-color: white;
 
         .navigator-item {
-            @imageHeight: 1rem;
+            @imageHeight: 0.8rem;
             height: 100%;
             width: 25%;
 
@@ -24,6 +24,7 @@
             .navigator-content {
                 height: @height - @imageHeight;
                 text-align: center;
+                font-size: 0.4rem;
             }
         }
     }
@@ -35,10 +36,14 @@
 
 <template>
     <div class="navigator-container">
-        <div class="navigator-item" v-for="item in navigatorItem" v-key="index">
-            <image src="http://printer.noerror.xyz/appImage/message.png" class="navigator-image"></image>
+        <router-link
+                class="navigator-item" v-for="item in navigatorItem"
+                :key="item.name"
+                :to="item.module"
+        >
+            <image :src="item.imageUrl" class="navigator-image"></image>
             <div class="navigator-content">{{item.name}}</div>
-        </div>
+        </router-link>
     </div>
 </template>
 
@@ -51,19 +56,23 @@
                 navigatorItem: [
                     {
                         name: '写信',
-                        imageUrl: ''
+                        module: '/index/writeLetter',
+                        imageUrl: 'http://printer.noerror.xyz/appImage/envelope.png'
                     },
                     {
                         name: '草稿箱',
-                        imageUrl: ''
+                        module: '/index/writeLetter',
+                        imageUrl: 'http://printer.noerror.xyz/appImage/draft.png'
                     },
                     {
                         name: '海岛',
-                        imageUrl: ''
+                        module: '/index/writeLetter',
+                        imageUrl: 'http://printer.noerror.xyz/appImage/land.png'
                     },
                     {
                         name: '我的',
-                        imageUrl: ''
+                        module: '/index/userInfo',
+                        imageUrl: 'http://printer.noerror.xyz/appImage/my.png'
                     },
                 ]
             }

@@ -2,7 +2,6 @@
 </style>
 <template>
     <div>
-        <navigator></navigator>
         <router-view/>
     </div>
 </template>

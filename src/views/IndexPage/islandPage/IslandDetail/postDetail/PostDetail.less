@@ -4,6 +4,7 @@
     padding-right: 20 * @px2rem;
 }
 .PostDetailView {
+    position: relative;
     .post-box {
         @paddingHor();
         padding-top: 20 * @px2rem;
@@ -84,4 +85,66 @@
             margin-bottom: 15 * @px2rem;
         }
     }
+
+    .input-box {
+        position: fixed;
+        bottom: 120px;
+        right: 0;
+        width: 100%;
+        z-index: 101;
+        input {
+            height: 60px;
+            width: 100%;
+            border: 1px solid black;
+            box-sizing: border-box;
+            padding-left: 10px;
+        }
+    }
+    .rua-box {
+        background-color: #ffffff;
+        position: relative;
+        .rua {
+            width: 100%;
+            box-sizing: border-box;
+            position: absolute;
+            border-top: #000 2 * @px2rem solid
+        }
+        .top {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            box-sizing: border-box;
+            padding: 0 16px;
+            .box {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+            }
+            .span {
+                cursor: pointer;
+                display: flex;
+                flex-direction: row;
+                justify-content: start;
+                align-items: center;
+            }
+            .span:nth-of-type(1) {
+                height: 80px;
+                width: 60px;
+                font-size: 60px;
+
+            }
+            .span:nth-of-type(2) {
+                height: 100%;
+            }
+            .button {
+                height: 60px;
+                padding: 0 10px;
+                box-sizing: border-box;
+                background-color: rgb(254, 204, 24);
+                color: #010101;
+            }
+        }
+    }
+
 }

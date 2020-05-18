@@ -29,7 +29,10 @@
   ],
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.19.2",
+    "babel-plugin-transform-runtime": "^6.23.0",
     "phantom-limb": "0.0.1",
+    "pinyin-match": "^1.1.0",
     "vue-router": "^3.0.1",
     "weex-vue-render": "^1.0.17"
   },
