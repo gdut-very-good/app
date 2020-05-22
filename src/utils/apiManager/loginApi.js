@@ -15,7 +15,6 @@ class LoginApi extends Request{
     }
 
     async uploadHeadIcon(data) {
-        console.log(data)
         return getResult(await this.upload('/user/upload', data))
     }
 }

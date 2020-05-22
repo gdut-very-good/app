@@ -16,10 +16,7 @@
 </template>
 
 <script lang="js">
-
-    import UserInfoPage from "@/views/IndexPage/userInfoPage/userInfoPage";
 	export default {
-		components: {UserInfoPage},
 		data() {
         	return {
 				draftData : [

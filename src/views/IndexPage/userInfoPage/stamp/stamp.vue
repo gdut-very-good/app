@@ -10,23 +10,20 @@
     }
 
     .bottom-con {
-        height: calc(100% - 1.5rem);
+        height: calc(100% - 1rem);
         background-color: @bgColor;
-        padding: 0 1rem 0 1rem;
+        padding: 0 0.5rem 0 0.5rem;
 
         .stamp-con {
             display: flex;
             flex-direction:row;
 
             .stamp-style {
-                @rectangleHeight: 2.3rem;
-                @rectangleWidth: 1.8rem;
-                height: 0;
-                width: 0;
-                border-top: @rectangleHeight solid black;
-                border-right: @rectangleWidth solid white;
-                border-bottom: @rectangleHeight solid white;
-                border-left: @rectangleWidth solid white;
+                @rectangleHeight: 5rem;
+                @rectangleWidth: 40%;
+                margin: 0.5rem 5% 0 5%;
+                height: @rectangleHeight;
+                width: @rectangleWidth;
             }
 
         }
@@ -41,27 +38,80 @@
     <div class="stamp-container">
         <div class="stamp-title">我的邮票</div>
         <div class="bottom-con">
-            <div class="stamp-con">
-                <div class="stamp-style"></div>
-                <div class="stamp-style"></div>
+            <div class="stamp-con" v-for="item in listItem">
+                <image
+                        v-for="list in item.data"
+                        class="stamp-style"
+                       :src="list.url" >
+                </image>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+    import {myApi} from "@/utils/apiManager/myApi";
+    import {errorCode} from "@/utils/errorCode/errorCode";
+    import {matchStamp} from "@/utils/stampStyle/stampStyle";
+
     export default {
         name: 'stamp',
 
         data() {
             return {
-                listItem: [
-
-                ]
+                listItem: [],
             }
         },
 
         mounted() {
+            this.getApi()
+        },
+
+        methods: {
+            getApi() {
+                myApi.getStamp().then(res => {
+                    if (res.code == 1) {
+                        this.listItem = this.showFormat(matchStamp(this.reformat(res.data.records)))
+                    } else {
+                        errorCode()
+                    }
+                })
+            },
+
+            reformat(stampList) {
+                const list = []
+                for (let i = 0; i < stampList.length; i++) {
+                    list.push(stampList[i].stampId)
+                }
+                return list
+            },
+
+            showFormat(database) {
+                let index = 0, tag = 0
+                const len = Math.floor(database.length / 2)
+                const format = []
+                if (!len) {
+                    return
+                }
+                while (index < len) {
+                    if (tag === 0) {
+                        format.push({
+                            data: []
+                        })
+                        format[index].data.push(database[tag])
+                    } else {
+                        if (!(tag % 2)) {
+                            format.push({
+                                data: []
+                            })
+                            index++
+                        }
+                        format[index].data.push(database[tag])
+                    }
+                    tag++
+                }
+                return format
+            }
 
         }
     }

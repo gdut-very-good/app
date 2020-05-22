@@ -175,7 +175,6 @@
                     password: this.log.password
                 }
                 loginModules.login(data).then(res => {
-                    console.log(res.data)
                     if (res.code == 1) {
                         this.$store.default.commit('updateUserState', res.data)
                         this.$router.push({
