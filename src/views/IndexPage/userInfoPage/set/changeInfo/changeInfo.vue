@@ -62,7 +62,7 @@
         },
 
         mounted() {
-            console.log(this.$route.query)
+
         },
 
         methods: {

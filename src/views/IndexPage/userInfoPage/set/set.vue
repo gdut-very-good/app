@@ -122,12 +122,9 @@
             upload() {
                 if (!!this.$refs.avatar.$el.files.length) {
                     let image = new FormData()
-                    console.log(this.$refs.avatar.$el.files)
-                    console.log(this.$refs.avatar.$el.files[0])
                     image.append('file', this.$refs.avatar.$el.files[0])
-                    console.log(image)
                     loginModules.uploadHeadIcon(image).then(res => {
-                        console.log(res)
+
                     })
                 } else {
                     alert('未选择文件')
@@ -136,7 +133,6 @@
             changeHeadIcon() {
                 let file = event.target.files[0];
                 let name = file.name
-                console.log(file)
             }
         }
     }

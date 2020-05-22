@@ -4,7 +4,6 @@ export function getResult(data, options) {
     if (option.isAlert) {
 
     }
-    console.log(data)
     return {
         code: data.code,
         message: data.message,

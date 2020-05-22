@@ -9,7 +9,7 @@ const _Request = axios.create({
     }
 });
 
-let Authorization = null
+let Authorization = '321bba9f-3949-410d-959b-b98f767deb01'
 
 /**
  * 统一对请求进行处理
@@ -60,14 +60,12 @@ export class Request {
     }
 
     upload(url, data) {
-        console.log(data)
         return _Request.post(baseUrl + url, data, {
             headers: {'Content-Type': 'multipart/form-data'}
         });
     }
 
     put(url, data) {
-        console.log(data)
         return _Request.put(baseUrl + url, JSON.stringify(data));
     }
 

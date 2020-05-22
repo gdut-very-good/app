@@ -187,7 +187,6 @@
         },
 
         mounted() {
-            console.log(this.$store.default)
             this.$store.default.state.count =  2
         },
 

@@ -16,9 +16,7 @@
 </template>
 
 <script lang="js">
-
 	export default {
-		components: {},
 		data() {
         	return {
 				draftData : [
