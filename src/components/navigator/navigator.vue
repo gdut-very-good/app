@@ -61,12 +61,12 @@
                     },
                     {
                         name: '草稿箱',
-                        module: '/index/writeLetter',
+                        module: '/index/draft',
                         imageUrl: 'http://printer.noerror.xyz/appImage/draft.png'
                     },
                     {
                         name: '海岛',
-                        module: '/index/writeLetter',
+                        module: '/index/island',
                         imageUrl: 'http://printer.noerror.xyz/appImage/land.png'
                     },
                     {

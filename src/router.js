@@ -53,9 +53,14 @@ export const router = new Router({
 					component: stamp
 				},
 				{
-					path : 'draftPage',
-					name : 'draftPage',
+					path : 'draft',
+					name : 'draft',
 					component : draftPage
+				},
+				{
+					path : 'island',
+					name : 'island',
+					component : IslandPage
 				}
 			]
         }

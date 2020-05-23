@@ -154,8 +154,8 @@
             return {
                 logShow: true,
                 log: {
-                    username: '',
-                    password: ''
+                    username: 'huange7',
+                    password: '123456'
                 },
                 sign: {
                     username: '',
@@ -173,11 +173,11 @@
                 let data = {
                     username: this.log.username,
                     password: this.log.password
-                }
+                };
                 loginModules.login(data).then(res => {
-                    console.log(res.data)
+                    console.log(res.data);
                     if (res.code == 1) {
-                        this.$store.default.commit('updateUserState', res.data)
+                        this.$store.default.commit('updateUserState', res.data);
                         this.$router.push({
                             name: 'userInfo'
                         })
@@ -194,7 +194,7 @@
                     "nickname":"你好",
                     "signature":"尽信书，不如无书",
                     "city":"广州市"
-                }
+                };
                 loginModules.register(data).then(res => {
                     if (res.code == 1) {
                         alert(res.message)

@@ -154,9 +154,9 @@
             console.log(PinyinMatch.match('小余', '小'))
 
             letter.getBoomFriend().then(res => {
-                console.log(res)
+                console.log(res);
                 if (res.code == 1) {
-                    this.boomFriend = res.data.records
+                    this.boomFriend = res.data.records;
                     console.log(this.boomFriend)
                 }
             })

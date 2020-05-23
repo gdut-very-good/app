@@ -2,12 +2,12 @@
     <div class="wrapper draftPageView">
         <div class="header">草稿箱</div>
         <div class="container">
-            <div class="title">共3条草稿</div>
+            <div class="title">共{{draftData.length}}条草稿</div>
             <div class="body">
-                <div class="box" v-for="(draft, index) in [1,2,3]" :key="index">
-                    <p class="title">信的标题</p>
-                    <p class="preview-content">信的预览内容</p>
-                    <p class="time">20.01</p>
+                <div class="box" v-for="(draft, index) in draftData" :key="index">
+                    <p class="title">{{draft.paper}}</p>
+                    <p class="preview-content">{{draft.content}}</p>
+                    <p class="time">{{draft.sendTime}}</p>
                 </div>
             </div>
         </div>
@@ -17,19 +17,33 @@
 
 <script lang="js">
 
+	import Api from "@/utils/apiManager/Api";
+	let str = `
+	    [
+	        {
+      "letterId": 43,
+      "senderId": 10,
+      "sendTime": "2020-01-01 00:00:00",
+      "receiverId": 6,
+      "receiveTime": null,
+      "content": "",
+	    ]
+	`;
+
 	export default {
 		components: {},
 		data() {
         	return {
-				draftData : [
-                    {
-
-                    }
-                ]
+				draftData : []
             }
-        }
+        },
+        async mounted() {
+			// let data = await draftApiModule.getDraftList();
+			// console.log(data);
+			this.draftData = await Api.get("http://island.hellochaos.cn/island/api/v1//letter/draft");
+		}
 
-    }
+	}
 </script>
 
 <style scoped lang="less">
