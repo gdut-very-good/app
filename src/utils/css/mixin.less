@@ -37,6 +37,7 @@
   width: 100%;
   font-size: 0.5rem;
   border-bottom: 1px solid gray;
+  background-color: white;
 }
 
 //图片样式
@@ -98,4 +99,31 @@
       line-height: 1.5rem;
     }
   }
+}
+
+//按钮公共一样
+.letter-button {
+  @radius: 1.4rem;
+  position: absolute;
+  height: @radius;
+  width: @radius;
+  text-align: center;
+  line-height: @radius;
+  font-size: 0.45rem;
+  background-color: rgb(200,200,200);
+  border-radius: 50%;
+  z-index: 100;
+  bottom: 0;
+  right: 1rem;
+}
+
+//渲染box公共样式
+.publicBox {
+  bottom: 2rem;
+  right: 0;
+  position: fixed;
+  height: 5rem;
+  width: 3.4rem;
+  background-color: transparent;
+  z-index: 99;
 }

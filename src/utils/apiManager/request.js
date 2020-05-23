@@ -9,7 +9,7 @@ const _Request = axios.create({
     }
 });
 
-let Authorization = null;
+let Authorization = '321bba9f-3949-410d-959b-b98f767deb01'
 
 /**
  * 统一对请求进行处理
@@ -20,7 +20,7 @@ _Request.interceptors.request.use((config) => {
     //     config.headers['Authorization'] = JSON.parse(localStorage.getItem("Authorization")).value;
     //     // config.headers['Authorization'] = '3c7f60de-1374-453f-8c97-6a19f53e2207';
     // }
-    if (Authorization) {
+    if (Authorization ) {
         config.headers['Authorization'] = Authorization ;
         // config.headers['Authorization'] = '3c7f60de-1374-453f-8c97-6a19f53e2207';
     }
@@ -28,7 +28,7 @@ _Request.interceptors.request.use((config) => {
 }, error => {
     //403
     //500 做出相应的错误提示
-});
+})
 
 // /**
 //  * 统一对返回的数据进行过滤
@@ -60,16 +60,15 @@ export class Request {
     }
 
     upload(url, data) {
-        console.log(data);
         return _Request.post(baseUrl + url, data, {
             headers: {'Content-Type': 'multipart/form-data'}
         });
     }
 
     put(url, data) {
-        console.log(data);
         return _Request.put(baseUrl + url, JSON.stringify(data));
     }
+
 }
 
-export {Authorization, baseUrl};
+export {baseUrl, Authorization}

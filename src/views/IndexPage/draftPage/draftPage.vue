@@ -12,34 +12,17 @@
             </div>
         </div>
     </div>
-
 </template>
 
 <script lang="js">
-
 	import Api from "@/utils/apiManager/Api";
-	let str = `
-	    [
-	        {
-      "letterId": 43,
-      "senderId": 10,
-      "sendTime": "2020-01-01 00:00:00",
-      "receiverId": 6,
-      "receiveTime": null,
-      "content": "",
-	    ]
-	`;
-
 	export default {
-		components: {},
 		data() {
         	return {
 				draftData : []
             }
         },
         async mounted() {
-			// let data = await draftApiModule.getDraftList();
-			// console.log(data);
 			this.draftData = await Api.get("http://island.hellochaos.cn/island/api/v1//letter/draft");
 		}
 
