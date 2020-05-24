@@ -16,8 +16,16 @@
         background-color: rgb(242, 242, 242);
 
         .list-item {
+            position: relative;
             .list-item;
         }
+    }
+
+    .upload {
+        opacity: 0;
+        position: absolute;
+        height: 100%;
+        width: 100%;
     }
 
 
@@ -28,10 +36,17 @@
         <div class="userInfo-container">我的资料</div>
         <div class="bottom-con">
             <!--头像信息-->
-            <div class="list-item" @click="upload">
+            <div class="list-item">
                 <div class="left-bar">
                     <image src="http://island.hellochaos.cn/uploads/9eb8b200-d164-43ad-9670-8f3e39db478c.png" class="head-image"></image>
                     <div class="left-bar-content">修改头像</div>
+                    <input
+                            type="file"
+                            class="upload"
+                            name="avatar"
+                            @change="upload()"
+                            ref="avatar"
+                    >
                 </div>
                 <div class="right-bar">
                     <image src="http://printer.noerror.xyz/appImage/right_arrow.png" class="right-arrow"></image>
@@ -52,19 +67,13 @@
                     <image src="http://printer.noerror.xyz/appImage/right_arrow.png" class="right-arrow"></image>
                 </div>
             </div>
-            <input
-                    type="file"
-                    class="upload"
-                    name="avatar"
-                    @change="changeHeadIcon($event)"
-                    ref="avatar"
-            >
         </div>
     </div>
 </template>
 
 <script>
     import {loginModules} from "@/utils/apiManager/loginApi";
+    import {errorCode} from "@/utils/errorCode/errorCode";
 
 
     export default {
@@ -124,15 +133,26 @@
                     let image = new FormData()
                     image.append('file', this.$refs.avatar.$el.files[0])
                     loginModules.uploadHeadIcon(image).then(res => {
-
+                        if (res.code == 1) {
+                            alert(res.message)
+                        } else {
+                            errorCode()
+                        }
                     })
                 } else {
                     alert('未选择文件')
                 }
             },
             changeHeadIcon() {
-                let file = event.target.files[0];
-                let name = file.name
+                if (!!this.$refs.avatar.$el.files.length) {
+                    let image = new FormData()
+                    image.append('file', this.$refs.avatar.$el.files[0])
+                    loginModules.uploadHeadIcon(image).then(res => {
+
+                    })
+                } else {
+                    alert('未选择文件')
+                }
             }
         }
     }

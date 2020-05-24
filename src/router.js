@@ -16,6 +16,9 @@ import letterIndex from "@/views/IndexPage/writeLetter/letterIndex";
 import changeInfo from "@/views/IndexPage/userInfoPage/set/changeInfo/changeInfo";
 import draftPage from "@/views/IndexPage/draftPage/draftPage";
 import IslandPage from "@/views/IndexPage/islandPage/IslandPage";
+import message from "@/views/IndexPage/userInfoPage/message/message";
+import managerTree from "@/views/IndexPage/userInfoPage/managerTree/managerTree";
+import singleTree from "@/views/IndexPage/userInfoPage/managerTree/singleTree/singleTree";
 import IslandDefault from "@/views/IndexPage/islandPage/IslandDetail/IslandDetail";
 import PostDetail from "@/views/IndexPage/islandPage/IslandDetail/postDetail/PostDetail";
 
@@ -31,8 +34,8 @@ export const router = new Router({
 	routes: [
 		{
 			path: '/',
-			name: 'letterMessage',
-			component: letterMessage
+			name: 'managerTree',
+			component: managerTree
 		},
 		{
 		    path: '/index',
@@ -94,9 +97,24 @@ export const router = new Router({
 					component: changeInfo
 				},
 				{
+					path: 'userInfo/managerTree',
+					name: 'managerTree',
+					component: managerTree
+				},
+				{
+					path: 'userInfo/managerTree/singleTree',
+					name: 'singleTree',
+					component: singleTree
+				},
+				{
 					path: 'userInfo/stamp',
 					name: 'stamp',
 					component: stamp
+				},
+				{
+					path: 'userInfo/message',
+					name: 'message',
+					component: message
 				},
 				{
 					path : 'draftPage',

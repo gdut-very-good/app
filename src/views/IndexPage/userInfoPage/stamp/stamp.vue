@@ -81,19 +81,19 @@
             reformat(stampList) {
                 const list = []
                 for (let i = 0; i < stampList.length; i++) {
-                    list.push(stampList[i].stampId)
+                    list.push(stampList[i].stampName)
                 }
                 return list
             },
 
             showFormat(database) {
                 let index = 0, tag = 0
-                const len = Math.floor(database.length / 2)
+                const len = Math.floor(database.length)
                 const format = []
                 if (!len) {
                     return
                 }
-                while (index < len) {
+                while (tag < len) {
                     if (tag === 0) {
                         format.push({
                             data: []

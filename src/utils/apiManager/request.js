@@ -9,7 +9,7 @@ const _Request = axios.create({
     }
 });
 
-let Authorization = '321bba9f-3949-410d-959b-b98f767deb01'
+let Authorization = '2b9c4043-e451-419b-b69a-98f370aedb92'
 
 /**
  * 统一对请求进行处理
@@ -69,4 +69,7 @@ export class Request {
         return _Request.put(baseUrl + url, JSON.stringify(data));
     }
 
+    delete(url) {
+        return _Request.delete(baseUrl + url);
+    }
 }
