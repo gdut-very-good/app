@@ -3,9 +3,9 @@
     	color : 'red',
     	width : this.widthStyle,
     	marginBottom : this.verticalSpace + 'px'
-    }">
+    }" >
         <div class="container" :style="{
-            	backgroundImage : `url(${this.bg})`,
+            	backgroundImage : `url(${this.background})`,
             	backgroundSize : 'cover'
             }">
             <div class="content">
@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="name">
-            {{name}}
+            {{username}}的海岛
         </div>
     </div>
 
@@ -32,14 +32,17 @@
 			verticalSpace : {
                 default : 22
             },
-            name : {
-                default : "Tom的海岛"
+            username : {
+                default : "Tom"
             },
             introduce : {
                 default: "海岛描述就是这个样子啦海岛描述就是这个样子啦"
             },
-            bg : {
+            background : {
                 default : "https://steamuserimages-a.akamaihd.net/ugc/918046970938426905/741086CE39C3AA0AD09AED02FF67D1285C066C07/?imw=1024&imh=577&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true"
+            },
+            userId : {
+        		require : true
             }
         },
         computed : {
@@ -50,6 +53,7 @@
         },
         mounted() {
         	console.log(this.widthStyle);
+        	console.log(this.userId);
 		}
 	}
 </script>

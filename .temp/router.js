@@ -17,23 +17,28 @@ import letterIndex from "@/views/IndexPage/writeLetter/letterIndex";
 import changeInfo from "@/views/IndexPage/userInfoPage/set/changeInfo/changeInfo";
 import draftPage from "@/views/IndexPage/draftPage/draftPage";
 import IslandPage from "@/views/IndexPage/islandPage/IslandPage";
-import IslandDefault from "@/views/IndexPage/islandPage/IslandDetail/IslandDetail";
+import IslandDetail from "@/views/IndexPage/islandPage/IslandDetail/IslandDetail";
 import PostDetail from "@/views/IndexPage/islandPage/IslandDetail/postDetail/PostDetail";
+import {Authorization} from "@/utils/apiManager/request";
 
 Vue.use(Router);
 
 const routerPush = Router.prototype.push
 Router.prototype.push = function push(location) {
     return routerPush.call(this, location).catch(error=> error)
-}
-
+};
 
 export const router = new Router({
 	routes: [
 		{
 			path: '/',
-			name: 'letterMessage',
-			component: letterMessage
+			redirect(to) {
+				if (Authorization) {
+					return '/index';
+				} else {
+					return '/login';
+				}
+			}
 		},
 		{
 		    path: '/index',
@@ -107,10 +112,19 @@ export const router = new Router({
 				{
 					path : 'island',
 					name : 'island',
-					component : IslandPage
+					component : IslandPage,
+				},
+				{
+					path : 'detail',
+					name : 'detail',
+					component : IslandDetail
 				}
-
 			]
-        }
+        },
+		{
+			path : '/login',
+			name : 'login',
+			component : login
+		}
 	]
 });

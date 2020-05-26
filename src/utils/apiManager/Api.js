@@ -24,13 +24,16 @@ Request.interceptors.request.use((config) => {
 //  * 统一对返回的数据进行过滤
 //  */
 Request.interceptors.response.use((result) => {
-	console.log(result);
 	let {data} = result;
 	let {code, message} = data;
 	if (successCode === code || successMsg === message) {
-		console.log("rua");
 		return data.data;
 	} else {
+		console.log(Authorization)
+		if (code === "3001") {
+			window.location.hash = "/login";
+		}
+
 		return Promise.reject(data);
 	}
 }, (error) => {

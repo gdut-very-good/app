@@ -1,5 +1,5 @@
 <style scoped lang="less">
-    @import "../../../utils/css/mixin";
+    @import "../../../../utils/css/mixin";
     .writeLetter-container {
         padding-bottom: 1.6rem;
     }
@@ -33,7 +33,7 @@
         color: white;
     }
     .box {
-       .publicBox;
+        .publicBox;
         animation:circleRoate 1s ;
         animation-timing-function:linear;
         animation-fill-mode: forwards;
@@ -96,35 +96,35 @@
 </template>
 
 <script>
-    import letterNav from "@/components/letterNav/letterNav";
-    import writeLetter from "@/views/IndexPage/writeLetter/writeLetter/writeLetter";
-    import shudong from "@/views/IndexPage/writeLetter/shudong/shudong";
-    import jiaonang from "@/views/IndexPage/writeLetter/jiaonang/jiaonang";
-    export default {
-        name: 'letterIndex',
-        components: {
-            letterNav: letterNav,
-        },
-        data() {
-            return {
-                title: '写点什么',
-                module: this.$route.name,
-                show: false
-            }
-        },
-        mounted() {
-        },
-        methods: {
-            test() {
-            },
-            route(module) {
-                this.$router.push({
-                    name: module
-                })
-            },
-            openBtn() {
-                this.show = true
-            }
-        }
-    }
+	import letterNav from "@/components/letterNav/letterNav";
+	import writeLetter from "@/views/IndexPage/writeLetter/writeLetter/writeLetter";
+	import shudong from "@/views/IndexPage/writeLetter/shudong/shudong";
+	import jiaonang from "@/views/IndexPage/writeLetter/jiaonang/jiaonang";
+	export default {
+		name: 'letterIndex',
+		components: {
+			letterNav: letterNav,
+		},
+		data() {
+			return {
+				title: '写点什么',
+				module: this.$route.name,
+				show: false
+			}
+		},
+		mounted() {
+		},
+		methods: {
+			test() {
+			},
+			route(module) {
+				this.$router.push({
+					name: module
+				})
+			},
+			openBtn() {
+				this.show = true
+			}
+		}
+	}
 </script>
