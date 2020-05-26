@@ -3,7 +3,7 @@
     	color : 'red',
     	width : this.widthStyle,
     	marginBottom : this.verticalSpace + 'px'
-    }" >
+    }" @click="toDetail">
         <div class="container" :style="{
             	backgroundImage : `url(${this.background})`,
             	backgroundSize : 'cover'
@@ -54,7 +54,18 @@
         mounted() {
         	console.log(this.widthStyle);
         	console.log(this.userId);
-		}
+		},
+        methods : {
+        	toDetail() {
+        		console.log(this.userId);
+        		this.$router.push({
+                    name : 'detail',
+                    query : {
+                    	userId : this.userId
+                    }
+                })
+            }
+        }
 	}
 </script>
 

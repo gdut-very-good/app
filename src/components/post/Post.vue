@@ -1,9 +1,9 @@
 <template>
     <div class="wrapper PostView">
-        <div class="content">{{introduce}}</div>
+        <div class="content">{{content}}</div>
         <div class="box">
             <p class="time">{{time}}</p>
-            <p class="reply">{{reply}}</p>
+            <p class="reply">{{view}}</p>
         </div>
     </div>
 
@@ -13,14 +13,20 @@
     export default {
         name : "Post",
         props : {
-        	introduce : {
+        	content : {
         		default : "这是我写的一个帖子，帖子内容是这样的帖子内容是这样的帖子内容是这样的帖子内容是这样的帖子内容是这样的帖子内容是这样的"
             },
             time : {
         		default: "00:00"
             },
-            reply : {
+            view : {
         		default : "12"
+            },
+            userId : {
+        		require : true
+            },
+            postId : {
+        		require : true
             }
         }
     }
