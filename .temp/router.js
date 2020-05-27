@@ -38,8 +38,8 @@ export const router = new Router({
 	routes: [
 		{
 			path: '/',
-			name: 'letter',
-			component: letter
+			name: 'userInfo',
+			component: userInfo
 		},
 		{
 		    path: '/index',
@@ -50,8 +50,6 @@ export const router = new Router({
 					path: 'userInfo',
 					name: 'userInfo',
 					component: userInfo,
-					children: [
-					]
 				},
 				{
 					path: 'letterMessage',
