@@ -1,5 +1,6 @@
 <style scoped lang="less">
     @import "../../../../utils/css/mixin";
+
     .writeLetter-title {
         .title;
     }
@@ -13,6 +14,7 @@
             border-bottom: 1px solid @bgColor;
             border-top: 1px solid @bgColor;
             margin-bottom: 1rem;
+
             .message-title {
                 display: flex;
                 flex-direction: row;
@@ -20,6 +22,7 @@
                 height: 50%;
                 line-height: @messageBox / @item;
             }
+
             .message-title-inner {
                 font-size: 0.45rem;
                 height: 100%;
@@ -27,11 +30,13 @@
                 line-height: @messageBox / @item;
                 width: 55%;
             }
+
             .message-content {
                 height: 50%;
                 font-size: 0.4rem;
                 line-height: @messageBox / @item;
             }
+
             .isRead {
                 height: 1rem;
                 line-height: 1rem;
@@ -40,8 +45,6 @@
             }
         }
     }
-
-
 
 
 </style>
@@ -58,7 +61,9 @@
                     <div>{{message.time}}</div>
                 </div>
                 <div class="message-content">{{message.content}}</div>
-                <div class="isRead" :style="message.isRead ? 'color: green' : 'color: red'">{{message.isRead ? '已读' : '未读'}}</div>
+                <div class="isRead" :style="message.isRead ? 'color: green' : 'color: red'">{{message.isRead ? '已读' :
+                    '未读'}}
+                </div>
             </div>
         </div>
     </div>
@@ -73,10 +78,7 @@
     export default {
         name: 'message',
 
-        computed: {
-
-
-        },
+        computed: {},
 
         data() {
             return {
@@ -86,31 +88,18 @@
         },
 
         mounted() {
-            // let data = {
-            //             username: 'huange7',
-            //             password: '123456'
-            //         }
-            //         loginModules.login(data).then(res => {
-            //
-            //             if (res.code == 1) {
-            //
-            //             }
-            //             alert(res.message)
-            //         })
-
-                    this.getNotice()
+            this.getNotice()
         },
 
         methods: {
             getNotice() {
-               myApi.getNotice().then(res => {
-                   console.log(res.data)
-                   if (res.code == 1) {
+                myApi.getNotice().then(res => {
+                    if (res.code == 1) {
                         this.messageList = res.data
-                   } else {
-                       errorCode()
-                   }
-               })
+                    } else {
+                        errorCode()
+                    }
+                })
             }
         }
 

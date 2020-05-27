@@ -22,6 +22,10 @@ class LetterApi extends Request{
     async getHoleList() {
         return getResult(await this.get('/tree-hole'))
     }
+    //写信
+    async submitLetter(data) {
+        return getResult(await this.post('/letter', data))
+    }
 }
 
 export const letter = new LetterApi()

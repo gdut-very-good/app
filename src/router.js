@@ -19,6 +19,9 @@ import IslandPage from "@/views/IndexPage/islandPage/IslandPage";
 import message from "@/views/IndexPage/userInfoPage/message/message";
 import managerTree from "@/views/IndexPage/userInfoPage/managerTree/managerTree";
 import singleTree from "@/views/IndexPage/userInfoPage/managerTree/singleTree/singleTree";
+import letter from "@/views/IndexPage/writeLetter/letter/letter";
+import envelope from "@/views/IndexPage/writeLetter/letter/envelope/envelope";
+import submitEnvelope from "@/views/IndexPage/writeLetter/letter/submitEnvelope/submitEnvelope";
 import IslandDefault from "@/views/IndexPage/islandPage/IslandDetail/IslandDetail";
 import PostDetail from "@/views/IndexPage/islandPage/IslandDetail/postDetail/PostDetail";
 
@@ -34,8 +37,8 @@ export const router = new Router({
 	routes: [
 		{
 			path: '/',
-			name: 'managerTree',
-			component: managerTree
+			name: 'letter',
+			component: letter
 		},
 		{
 		    path: '/index',
@@ -90,6 +93,26 @@ export const router = new Router({
 					path: 'userInfo/set',
 					name: 'set',
 					component: set
+				},
+				{
+					path: 'letterIndex/writeLetter/letter',
+					name: 'envelope',
+					component: envelope,
+				},
+				// {
+				// 	path: 'letterIndex/writeLetter/envelope',
+				// 	name: 'envelope',
+				// 	component: envelope,
+				// },
+				{
+					path: 'letterIndex/writeLetter/envelope',
+					name: 'envelope',
+					component: envelope,
+				},
+				{
+					path: 'letterIndex/writeLetter/submitEnvelope',
+					name: 'submitEnvelope',
+					component: submitEnvelope,
 				},
 				{
 					path: 'userInfo/set/changeInfo',

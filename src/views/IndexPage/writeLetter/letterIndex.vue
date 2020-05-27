@@ -142,7 +142,6 @@
             },
 
             route(module) {
-                console.log('diao')
                 this.$router.push({
                     name: module
                 })

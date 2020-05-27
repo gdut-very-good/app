@@ -92,7 +92,6 @@
 
             getTreeList() {
                 myApi.getMyTreeHole().then(res => {
-                    console.log(res)
                     this.treeList = res.data
                 })
             }

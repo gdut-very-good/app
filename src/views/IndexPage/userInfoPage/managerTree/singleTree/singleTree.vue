@@ -37,6 +37,14 @@
         text-align: center;
     }
 
+    .leaving-message {
+        .message-content {
+            height: 1rem;
+            text-align: center;
+            font-size: 0.5rem;
+        }
+    }
+
 
 </style>
 
@@ -49,6 +57,9 @@
             <div class="shudong-second-title">{{treeHole.title}}</div>
             <div class="text-area">
                 <div>{{treeHole.content}}</div>
+            </div>
+            <div class="leaving-message">
+                <div class="message-content"></div>
             </div>
             <div class="delete-btn" @click="deleteTree">删除</div>
         </div>
@@ -79,8 +90,8 @@
             //获得树洞信息
             getTreeInfo() {
                 myApi.getSingleTreeHole(this.$route.query.id).then(res => {
+                    console.log(res.data)
                     this.treeHole = res.data.hole
-                    console.log(this.treeHole)
                     if (!res.code) {
                         errorCode()
                     }

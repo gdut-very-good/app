@@ -1,6 +1,7 @@
 //图片样式,前端保存
-const stamp = [
+export const stamp = [
     {
+        stampId: 12,
         stampName: '热气球',
         url: 'http://printer.noerror.xyz/appImage/热气球.png'
     },
@@ -10,18 +11,22 @@ const stamp = [
         url: 'http://printer.noerror.xyz/appImage/钥匙.png'
     },
     {
+        stampId: 12,
         stampName: '女士',
         url: 'http://printer.noerror.xyz/appImage/女士.png'
     },
     {
+        stampId: 12,
         stampName: '玫瑰',
         url: 'http://printer.noerror.xyz/appImage/玫瑰.png'
     },
     {
+        stampId: 12,
         stampName: '男孩',
         url: 'http://printer.noerror.xyz/appImage/男孩.png'
     },
     {
+        stampId: 12,
         stampName: '女孩',
         url: 'http://printer.noerror.xyz/appImage/女孩.png'
     },
@@ -30,14 +35,17 @@ const stamp = [
         url: 'http://printer.noerror.xyz/appImage/巴黎.png'
     },
     {
+        stampId: 12,
         stampName: '笔墨',
         url: 'http://printer.noerror.xyz/appImage/笔墨.png'
     },
     {
+        stampId: 12,
         stampName: '绅士',
         url: 'http://printer.noerror.xyz/appImage/绅士.png'
     },
     {
+        stampId: 12,
         stampName: '中国',
         url: 'http://printer.noerror.xyz/appImage/绅士.png'
     },
