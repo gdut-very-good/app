@@ -9,7 +9,7 @@ const _Request = axios.create({
     }
 });
 
-let Authorization = 'b4364483-b1ed-4a37-a3ff-b4948261b10b'
+let Authorization = '25597185-5a14-414d-b8a9-6c034994c5f7'
 
 /**
  * 统一对请求进行处理

@@ -10,7 +10,6 @@
     }
 
     .bottom-con {
-        height: calc(100% - 1rem);
         background-color: @bgColor;
         padding: 0 0.5rem 0 0.5rem;
 

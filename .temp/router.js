@@ -6,9 +6,7 @@ import Index from "@/views/IndexPage/Index";
 import set from "@/views/IndexPage/userInfoPage/set/set";
 import userInfo from "@/views/IndexPage/userInfoPage/userInfo";
 import stamp from "@/views/IndexPage/userInfoPage/stamp/stamp";
-import writeLetter from "@/views/IndexPage/writeLetter/writeLetter/writeLetter";
 import jiaonangList from "@/views/IndexPage/writeLetter/jiaonangList/jiaonangList";
-import shudongList from "@/views/IndexPage/writeLetter/shudongList/shudongList";
 import friendInfo from "@/views/IndexPage/writeLetter/writeLetter/friendInfo/friendInfo";
 import letterMessage from "@/views/IndexPage/writeLetter/writeLetter/letterMessage/letterMessage";
 import shudong from '@/views/IndexPage/writeLetter/shudong/shudong'
@@ -60,23 +58,6 @@ export const router = new Router({
 					path: 'letterIndex',
 					name: 'letterIndex',
 					component: letterIndex,
-					children: [
-						{
-							path: 'writeLetter',
-							name: 'writeLetter',
-							component: writeLetter,
-						},
-						{
-							path: 'jiaonangList',
-							name: 'jiaonangList',
-							component: jiaonangList,
-						},
-						{
-							path: 'shudongList',
-							name: 'shudongList',
-							component: shudongList,
-						},
-					]
 				},
 				{
 					path: 'jiaonang',
@@ -98,11 +79,6 @@ export const router = new Router({
 					name: 'envelope',
 					component: envelope,
 				},
-				// {
-				// 	path: 'letterIndex/writeLetter/envelope',
-				// 	name: 'envelope',
-				// 	component: envelope,
-				// },
 				{
 					path: 'letterIndex/writeLetter/envelope',
 					name: 'envelope',

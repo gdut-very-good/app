@@ -146,7 +146,7 @@
 </template>
 
 <script>
-    import {mapState, mapGetters} from "vuex";
+    import {loginModules} from "@/utils/apiManager/loginApi";
 
     export default {
         name: 'userInfo',
@@ -179,7 +179,7 @@
                     },
                     {
                         name: '注销',
-                        module: 'message',
+                        module: '',
                         imageUrl: 'http://printer.noerror.xyz/appImage/zhuxiao.png'
                     },
                 ]

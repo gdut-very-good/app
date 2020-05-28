@@ -110,22 +110,6 @@
         },
 
         mounted() {
-
-
-                // let data = {
-                //     username: 'huange7',
-                //     password: '123456'
-                // }
-                // loginModules.login(data).then(res => {
-                //
-                //     if (res.code == 1) {
-                //
-                //     }
-                //     alert(res.message)
-                // })
-
-
-
             letter.getBoomFriend().then(res => {
                 if (res.code == 1) {
                     this.boomFriend = this.reFormat(res.data.records)

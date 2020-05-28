@@ -78,11 +78,6 @@ export const router = new Router({
 					name: 'envelope',
 					component: envelope,
 				},
-				// {
-				// 	path: 'letterIndex/writeLetter/envelope',
-				// 	name: 'envelope',
-				// 	component: envelope,
-				// },
 				{
 					path: 'letterIndex/writeLetter/envelope',
 					name: 'envelope',
