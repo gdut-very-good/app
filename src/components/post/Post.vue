@@ -1,5 +1,5 @@
 <template>
-    <div class="wrapper PostView">
+    <div class="wrapper PostView" @click="toPostView">
         <div class="content">{{content}}</div>
         <div class="box">
             <p class="time">{{time}}</p>
@@ -27,6 +27,16 @@
             },
             postId : {
         		require : true
+            }
+        },
+        methods : {
+			toPostView() {
+                this.$router.push({
+                    name : 'poster',
+                    query : {
+                    	postId : this.postId
+                    }
+                })
             }
         }
     }

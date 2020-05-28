@@ -4,7 +4,7 @@
             <div class="avatar-container">
                 <div class="left">
                     <div class="avatar-box">
-                        <image :src="this.avatar" class="avatar"/>
+                        <image :src="userInfo.photo" class="avatar"/>
                         <p class="name">Tom</p>
                     </div>
                 </div>
@@ -13,24 +13,21 @@
                 </div>
             </div>
             <div class="content">
-                这是我写的一个帖子这是我写的一个帖子这是我写的一个帖子
-                这是我写的一个帖子这是我写的一个帖子这是我写的一个帖子
-                这是我写的一个帖子这是我写的一个帖子这是我写的一个帖子
-                这是我写的一个帖子这是我写的一个帖子这是我写的一个帖子
+                {{postDetail.content}}
             </div>
         </div>
         <div class="comment-box" v-show="inputVisibility">
-            <div class="comment" v-for="(comment, index) in [1,2,3]" :key="index">
+            <div class="comment" v-for="(comment, index) in commentData" :key="index">
                 <div class="avatar-box">
                     <img :src="this.avatar" alt="" class="avatar"/>
                 </div>
                 <div class="content">
                     <div class="top">
-                        <p class="name">tom</p>
+                        <p class="name"></p>
                         <button class="reply">回复</button>
                     </div>
                     <div class="bottom">
-                        <p>我评论了一下这个动态我评论了一下这个动态我评论了一下这个动态我评论了一下这个动态我评论了一下这个动态我评论了一下这个动态</p>
+                        <p>{{comment.content}}</p>
                     </div>
                 </div>
             </div>
@@ -55,12 +52,17 @@
 </template>
 
 <script lang="js">
-    export default {
+    import Api from "@/utils/apiManager/Api";
+
+	export default {
     	name : "postDetail",
         data() {
     		return {
 				inputVal : "",
-                inputVisibility : true
+                inputVisibility : true,
+                postDetail : {},
+                userInfo : {},
+				commentData : []
             }
         },
         props : {
@@ -75,8 +77,20 @@
 			post() {
 				this.inputVisibility = true;
             }
-        }
-    }
+        },
+        mounted() {
+    		let posterId = this.$route.query.postId;
+    		Api.get(`/post/${posterId}`).then((data) => {
+    			this.postDetail = data;
+    			Api.get(`/user/${data.userId}`).then((data) => {
+                    this.userInfo = data;
+                });
+                Api.get(`/reply/post/${posterId}`).then((data) => {
+                    this.commentData = data;
+                });
+            });
+		}
+	}
 </script>
 
 <style scoped lang="less">

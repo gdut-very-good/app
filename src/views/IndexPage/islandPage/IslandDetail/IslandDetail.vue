@@ -16,7 +16,7 @@
             </div>
         </div>
         <div class="body" v-show="!ruaVisibility">
-            <Post v-for="(data, index) in postList" v-bind="data" v-key="index"/>
+            <Post v-for="(data, index) in postList" v-bind="data"/>
         </div>
         <div class="pos" @click="ruaVisibility = true" v-show="!ruaVisibility" style="width: 100px;height: 100px; position: fixed;
             z-index: 1; bottom: 150px; right: 20px;

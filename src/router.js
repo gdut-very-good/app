@@ -117,6 +117,11 @@ export const router = new Router({
 					path : 'detail',
 					name : 'detail',
 					component : IslandDetail
+				},
+				{
+					path : 'poster',
+					name : 'poster',
+					component : PostDetail
 				}
 			]
         },
