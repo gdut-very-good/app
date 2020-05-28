@@ -1,0 +1,129 @@
+@bgColor: rgb(242,242,242);
+
+.absolute (@height, @width) {
+  height: @height;
+  width: @width;
+  position: absolute;
+  left: calc(50% - (@width / 2));
+}
+
+.placeholderColor(@color) {
+  input::-webkit-input-placeholder{
+    color:@color;
+  }
+  input::-moz-placeholder{   /* Mozilla Firefox 19+ */
+    color:@color;
+  }
+  input:-moz-placeholder{    /* Mozilla Firefox 4 to 18 */
+    color:@color;
+  }
+  input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
+    color:@color;
+  }
+}
+
+.inline {
+  display: inline;
+  vertical-align: top;
+}
+
+//title样式
+.title {
+  @height: 1.5rem;
+  height: @height;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  font-size: 0.5rem;
+  border-bottom: 1px solid gray;
+  background-color: white;
+}
+
+//图片样式
+.image(@height, @width) {
+  height: @height;
+  width: @width;
+}
+
+//我的列表公共样式
+.list-item {
+  @height: 1.5rem;
+  @fontSize: 0.4rem;
+  position: relative;
+  background-color: white;
+  padding-left: 20px;
+  width: 100%;
+  height: @height;
+
+  .left-bar {
+    height: 100%;
+
+    .head-image {
+      position: absolute;
+      left: 0.2rem;
+      height: 1.5rem;
+      width: 1.5rem;
+      border-radius: 50%;
+    }
+
+    .left-bar-content {
+      left: 1.7rem;
+      height: 100%;
+      line-height: @height;
+      font-size: @fontSize;
+    }
+  }
+
+  .right-bar {
+    position: absolute;
+    right: 0.3rem;
+    height: 100%;
+    width: 50%;
+    text-align: right;
+
+    .right-bar-content {
+      position: absolute;
+      right: 0.6rem;
+      height: 100%;
+      line-height: 1.5rem;
+      font-size :@fontSize;
+      color: rgb(213,213,213);
+    }
+    .right-arrow {
+      width: 0.6rem;
+      position: absolute;
+      right: 0;
+      top: 0.45rem;
+      height: 0.6rem;
+      line-height: 1.5rem;
+    }
+  }
+}
+
+//按钮公共一样
+.letter-button {
+  @radius: 1.4rem;
+  position: absolute;
+  height: @radius;
+  width: @radius;
+  text-align: center;
+  line-height: @radius;
+  font-size: 0.45rem;
+  background-color: rgb(200,200,200);
+  border-radius: 50%;
+  z-index: 100;
+  bottom: 0;
+  right: 1rem;
+}
+
+//渲染box公共样式
+.publicBox {
+  bottom: 2rem;
+  right: 0;
+  position: fixed;
+  height: 5rem;
+  width: 3.4rem;
+  background-color: transparent;
+  z-index: 99;
+}

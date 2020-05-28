@@ -1,24 +1,24 @@
 <template>
-    <div class="wrapper IndexView">
-        rua
-        <p>rua</p>
-        <header>header</header>
-
-        <footer>footer</footer>
+    <div>
+        <navigator></navigator>
+        <router-view></router-view>
     </div>
-
 </template>
 
 <script>
+    import navigator from "@/components/navigator/navigator";
 	export default {
 		name: 'index',
+        components: {
+            navigator: navigator
+        },
 
 		data() {
 			return {}
 		},
 
 		mounted() {
-
+	
 		}
 	}
 </script>

@@ -1,0 +1,86 @@
+@px2rem : 1 / 54rem;
+@paddingHor : 10;
+@paddingHorPx : 10px;
+.IslandDetailView {
+    margin-bottom: 120px;
+    .header {
+        .bg {
+            height: 300 * @px2rem;
+            width: 100%;
+
+        }
+        .container {
+            height: 100 * @px2rem;
+            .avatar-box {
+                .avatar {
+                    width: 120 * @px2rem;
+                    height: 120 * @px2rem;
+                }
+                position: relative;
+                transform: translateY(-60 * @px2rem);
+                .name {
+                    margin-top: 5 * @px2rem;
+                    font-size: 26 * @px2rem;
+                    padding-left: 10 * @px2rem;
+                }
+            }
+            .content {
+                position: absolute;
+                top: 30 * @px2rem;
+                right: @paddingHor * @px2rem;
+                transform: translateY(-50%);
+            }
+        }
+    }
+    .body {
+        padding: 0 @paddingHorPx;
+    }
+
+    .rua-box {
+        background-color: #ffffff;
+        position: relative;
+        z-index: 9999;
+        .rua {
+            width: 100%;
+            box-sizing: border-box;
+            position: absolute;
+            border-top: #000 2 * @px2rem solid
+        }
+        .top {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            box-sizing: border-box;
+            padding: 0 16px;
+            .box {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+            }
+            .span {
+                cursor: pointer;
+                display: flex;
+                flex-direction: row;
+                justify-content: start;
+                align-items: center;
+            }
+            .span:nth-of-type(1) {
+                height: 80px;
+                width: 60px;
+                font-size: 60px;
+
+            }
+            .span:nth-of-type(2) {
+                height: 100%;
+            }
+            .button {
+                height: 60px;
+                padding: 0 10px;
+                box-sizing: border-box;
+                background-color: rgb(254, 204, 24);
+                color: #010101;
+            }
+        }
+    }
+}
