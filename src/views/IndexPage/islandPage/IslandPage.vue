@@ -7,11 +7,9 @@
         </div>
         <div class="container-box" style="">
             <div class="avatar-box">
-                <image class="avatar" :src="myInfo.photo"></image>
+                <image :src="this.$store.default.state.imageBaseUrl + myInfo.photo" class="avatar"></image>
             </div>
-            <div class="rua-box" :style="{
-                // background: `url(${myInfo.background})`
-            }">
+            <div class="rua-box" @click="toIsland(myInfo.userId)">
                 <p class="first">我的海岛</p>
                 <p class="second">{{myInfo.signature}}</p>
             </div>
@@ -20,6 +18,7 @@
             <islandItem v-for="(data, index) in starIsland" v-bind="data"/>
         </div>
     </div>
+
 
 </template>
 
@@ -45,6 +44,14 @@
             },
             inputBlur() {
 				this.buttonMsg = '漂流'
+            },
+            toIsland(userId) {
+				this.$router.push({
+					name : 'detail',
+					query : {
+						userId
+					}
+				})
             }
         },
         mounted() {

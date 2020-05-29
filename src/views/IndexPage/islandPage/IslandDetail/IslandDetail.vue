@@ -1,13 +1,14 @@
 <template>
     <div class="wrapper IslandDetailView">
+        <input type="file" ref="fileInput" @change="handleFileChange" style="display: none">
         <div class="header" v-show="!ruaVisibility">
             <div class="bg" :style="{
-            	backgroundImage : `url(${this.userInfo.background})`,
+            	backgroundImage : `url(${this.userInfo.background ? this.$store.default.state.imageBaseUrl + this.userInfo.background : this.$store.default.state.defaultImageUrl})`,
             	backgroundSize : 'cover'
-            }"></div>
+            }" @click="changeImage"></div>
             <div class="container">
                 <div class="avatar-box">
-                    <image :src="userInfo.photo" alt="" class="avatar"/>
+                    <image :src="this.$store.default.state.imageBaseUrl + userInfo.photo" alt="" class="avatar"/>
                     <p class="name">{{userInfo.username}}</p>
                 </div>
                 <div class="content">
@@ -63,6 +64,21 @@
         },
         methods : {
         	post() {
+
+            },
+            handleFileChange(e) {
+        		let file = e.target.files[0];
+        		console.log(file);
+        		Api.upload('/user/upload/background', {
+					file
+                }).then((res) => {
+                    console.log(res);
+                });
+            },
+
+			changeImage() {
+        		console.log(this.$refs);
+                this.$refs.fileInput.$el.click();
 
             }
         },

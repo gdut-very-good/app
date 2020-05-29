@@ -2,6 +2,7 @@
 node_modules
 /dist
 /platforms
+/platforms
 oss.config.js
 
 # local env files

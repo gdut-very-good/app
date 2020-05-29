@@ -53,7 +53,9 @@ class Api {
 	}
 
 	upload(url, data) {
-		console.log(data);
+		if (!(data instanceof FormData)) {
+			data = dataToFormData(data);
+		}
 		return Request.post(url, data, {
 			headers: {'Content-Type': 'multipart/form-data'}
 		});
@@ -64,4 +66,13 @@ class Api {
 		return Request.put(url, data);
 	}
 }
+
+function dataToFormData(data) {
+	let formData = new FormData();
+	Object.keys(data).forEach((key) => {
+		formData.append(key, data[key]);
+	});
+	return formData;
+}
+
 export default new Api();

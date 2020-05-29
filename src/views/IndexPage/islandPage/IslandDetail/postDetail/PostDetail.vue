@@ -5,7 +5,7 @@
                 <div class="left">
                     <div class="avatar-box">
                         <image :src="userInfo.photo" class="avatar"/>
-                        <p class="name">Tom</p>
+                        <p class="name">{{userInfo.username}}</p>
                     </div>
                 </div>
                 <div class="right">
@@ -24,7 +24,7 @@
                 <div class="content">
                     <div class="top">
                         <p class="name"></p>
-                        <button class="reply">回复</button>
+                        <button class="reply" @click="beReplyId = comment.replyId">回复</button>
                     </div>
                     <div class="bottom">
                         <p>{{comment.content}}</p>
@@ -33,7 +33,7 @@
             </div>
         </div>
         <div class="input-box">
-            <input placeholder="写评论" v-model="inputVal" @focus="onInputFocus" v-show="inputVisibility"/>
+            <input placeholder="写评论" :value="''" @focus="onInputFocus" v-show="inputVisibility"/>
         </div>
         <div class="rua-box" v-show="!inputVisibility" style="margin-top: 20px; ">
             <div class="rua">
@@ -44,7 +44,7 @@
                     </div>
                     <button class="button" @click="post">发布</button>
                 </div>
-                <textarea rows="8" placeholder="写下你的想法" style="padding: 0 16px; box-sizing: border-box; font-size: 32px"></textarea>
+                <textarea rows="8" v-model="inputVal" placeholder="写下你的想法" style="padding: 0 16px; box-sizing: border-box; font-size: 32px"></textarea>
             </div>
         </div>
     </div>
@@ -62,7 +62,9 @@
                 inputVisibility : true,
                 postDetail : {},
                 userInfo : {},
-				commentData : []
+				commentData : [],
+                beReplyId : 0,
+				postId : 0
             }
         },
         props : {
@@ -76,18 +78,26 @@
             },
 			post() {
 				this.inputVisibility = true;
+				Api.post('/reply/', {
+                    beReplyId : this.beReplyId ? this.beReplyId : null,
+                    content : this.inputVal,
+                    postId : this.postId
+                }).then(() => {
+					Api.get(`/reply/post/${this.postId}`).then((data) => {
+						this.commentData = data;
+					});
+                });
             }
         },
         mounted() {
     		let posterId = this.$route.query.postId;
+    		this.postId = posterId;
     		Api.get(`/post/${posterId}`).then((data) => {
     			this.postDetail = data;
     			Api.get(`/user/${data.userId}`).then((data) => {
                     this.userInfo = data;
                 });
-                Api.get(`/reply/post/${posterId}`).then((data) => {
-                    this.commentData = data;
-                });
+
             });
 		}
 	}

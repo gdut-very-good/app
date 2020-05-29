@@ -5,7 +5,7 @@
     	marginBottom : this.verticalSpace + 'px'
     }" @click="toDetail">
         <div class="container" :style="{
-            	backgroundImage : `url(${this.background})`,
+            	backgroundImage : `url(${this.background ? this.$store.default.state.imageBaseUrl + this.background : this.$store.default.state.defaultImageUrl})`,
             	backgroundSize : 'cover'
             }">
             <div class="content">
@@ -54,6 +54,7 @@
         mounted() {
         	console.log(this.widthStyle);
         	console.log(this.userId);
+        	// console.log(this.$store.default.state.constants.imageBaseUrl);
 		},
         methods : {
         	toDetail() {
