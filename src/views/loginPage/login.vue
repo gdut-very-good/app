@@ -3,19 +3,16 @@
     .register-login-con {
         height: 100vh;
     }
-
     .app-logo {
         .absolute(200px, 200px);
         border-radius: 50%;
         background-color: #00B4FF;
         top: 10%;
     }
-
     .login-con {
         width: 80%;
         margin-left: 10%;
         margin-top: 54%;
-
         .submit {
             height: 100px;
             width: 80%;
@@ -28,12 +25,10 @@
             color: white;
         }
     }
-
     .register-con {
         width: 80%;
         margin-left: 10%;
         margin-top: 54%;
-
         .sign-up {
             height: 100px;
             width: 80%;
@@ -45,10 +40,7 @@
             border-radius: 100px;
             color: white;
         }
-
-
     }
-
     .username-con {
         position: relative;
         .placeholderColor(white);
@@ -58,7 +50,6 @@
         margin-bottom: 30px;
         border-bottom: 1px solid #dcd5d5;
         font-size: 0;
-
         .user-icon {
             position: absolute;
             height: 70px;
@@ -66,7 +57,6 @@
             left: 0;
             bottom: 15px;
         }
-
         div {
             position: relative;
             height: 100%;
@@ -74,7 +64,6 @@
             padding-left: 90px;
         }
     }
-
     .username-con input {
         background-color: transparent;
         height: 100%;
@@ -84,12 +73,10 @@
         font-size: 0.5rem;
         color: white;
     }
-
     .backgroundImage {
         .absolute(100%,100%);
         filter: blur(3px);
     }
-
     .register-notice {
         .absolute(auto, 70%);
         bottom: 50px;
@@ -97,7 +84,6 @@
         color: white;
         font-size: 0.6rem;
     }
-
 </style>
 
 <template>
@@ -146,16 +132,14 @@
 
 <script>
     import {loginModules} from "@/utils/apiManager/loginApi";
-
     export default {
         name: 'login',
-
         data() {
             return {
                 logShow: true,
                 log: {
-                    username: '',
-                    password: ''
+                    username: 'huange7',
+                    password: '123456'
                 },
                 sign: {
                     username: '',
@@ -164,16 +148,14 @@
                 }
             }
         },
-
         mounted() {
         },
-
         methods: {
             toIndex() {
                 let data = {
                     username: this.log.username,
                     password: this.log.password
-                }
+                };
                 loginModules.login(data).then(res => {
                     if (res.code == 1) {
                         this.$store.default.commit('updateUserState', res.data)
@@ -184,7 +166,6 @@
                     alert(res.message)
                 })
             },
-
             signUp() {
                 const data = {
                     "username":"jackson",
@@ -193,7 +174,7 @@
                     "nickname":"你好",
                     "signature":"尽信书，不如无书",
                     "city":"广州市"
-                }
+                };
                 loginModules.register(data).then(res => {
                     if (res.code == 1) {
                         alert(res.message)
@@ -205,5 +186,3 @@
         }
     }
 </script>
-
-

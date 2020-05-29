@@ -22,22 +22,28 @@ import letter from "@/views/IndexPage/writeLetter/letter/letter";
 import envelope from "@/views/IndexPage/writeLetter/letter/envelope/envelope";
 import submitEnvelope from "@/views/IndexPage/writeLetter/letter/submitEnvelope/submitEnvelope";
 import IslandDefault from "@/views/IndexPage/islandPage/IslandDetail/IslandDetail";
+import IslandDetail from "@/views/IndexPage/islandPage/IslandDetail/IslandDetail";
 import PostDetail from "@/views/IndexPage/islandPage/IslandDetail/postDetail/PostDetail";
+import {Authorization} from "@/utils/apiManager/request";
 
 Vue.use(Router);
 
 const routerPush = Router.prototype.push
 Router.prototype.push = function push(location) {
     return routerPush.call(this, location).catch(error=> error)
-}
-
+};
 
 export const router = new Router({
 	routes: [
 		{
 			path: '/',
-			name: 'userInfo',
-			component: userInfo
+			redirect(to) {
+				if (Authorization) {
+					return '/index';
+				} else {
+					return '/login';
+				}
+			}
 		},
 		{
 		    path: '/index',
@@ -48,6 +54,8 @@ export const router = new Router({
 					path: 'userInfo',
 					name: 'userInfo',
 					component: userInfo,
+					children: [
+					]
 				},
 				{
 					path: 'letterMessage',
@@ -58,6 +66,23 @@ export const router = new Router({
 					path: 'letterIndex',
 					name: 'letterIndex',
 					component: letterIndex,
+					children: [
+						{
+							path: 'writeLetter',
+							name: 'writeLetter',
+							component: writeLetter,
+						},
+						{
+							path: 'jiaonangList',
+							name: 'jiaonangList',
+							component: jiaonangList,
+						},
+						{
+							path: 'shudongList',
+							name: 'shudongList',
+							component: shudongList,
+						},
+					]
 				},
 				{
 					path: 'jiaonang',
@@ -110,21 +135,31 @@ export const router = new Router({
 					component: stamp
 				},
 				{
-					path: 'userInfo/message',
-					name: 'message',
-					component: message
-				},
-				{
-					path : 'draftPage',
-					name : 'draftPage',
+					path : 'draft',
+					name : 'draft',
 					component : draftPage
 				},
 				{
-					path : 'IslandPage',
-					name : 'IslandPage',
-					component : IslandPage
+					path : 'island',
+					name : 'island',
+					component : IslandPage,
 				},
+				{
+					path : 'detail',
+					name : 'detail',
+					component : IslandDetail
+				},
+				{
+					path : 'poster',
+					name : 'poster',
+					component : PostDetail
+				}
 			]
-        }
+        },
+		{
+			path : '/login',
+			name : 'login',
+			component : login
+		}
 	]
 });

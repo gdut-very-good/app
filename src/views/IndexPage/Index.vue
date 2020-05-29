@@ -12,12 +12,13 @@
         components: {
             navigator: navigator
         },
+
 		data() {
 			return {}
 		},
 
 		mounted() {
-
+	
 		}
 	}
 </script>

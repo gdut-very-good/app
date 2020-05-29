@@ -10,17 +10,17 @@
         z-index: 100;
         flex-direction:row;
         background-color: white;
-
+    
         .navigator-item {
             @imageHeight: 0.8rem;
             height: 100%;
             width: 25%;
-
+    
             .navigator-image {
                 .image(@imageHeight, @imageHeight);
                 margin: auto;
             }
-
+    
             .navigator-content {
                 height: @height - @imageHeight;
                 text-align: center;
@@ -61,12 +61,12 @@
                     },
                     {
                         name: '草稿箱',
-                        module: '/index/draftPage',
+                        module: '/index/draft',
                         imageUrl: 'http://printer.noerror.xyz/appImage/draft.png'
                     },
                     {
                         name: '海岛',
-                        module: '/index/IslandPage',
+                        module: '/index/island',
                         imageUrl: 'http://printer.noerror.xyz/appImage/land.png'
                     },
                     {
@@ -79,7 +79,7 @@
         },
 
         mounted() {
-
+    
         }
     }
 </script>

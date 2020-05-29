@@ -8,7 +8,9 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
 	state: {
-		count : 0
+		count : 0,
+		imageBaseUrl : 'http://island.hellochaos.cn/uploads/',
+		defaultImageUrl : 'http://printer.noerror.xyz/appImage/background.png'
 	},
 	mutations: {},
 	actions: {},
@@ -27,6 +29,6 @@ export default new Vuex.Store({
 					}
 				}
 			}
-		}
+		},
 	}
 });
