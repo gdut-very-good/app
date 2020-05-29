@@ -104,8 +104,9 @@
             <div class="other-item-xiexin" @click="route('writeLetter')">写信</div>
         </div>
         <div class="bottom-con">
-            <letterNav></letterNav>
-            <router-view></router-view>
+            <letterNav @changeModule="changeModule"></letterNav>
+            <writeLetter :style="show?'display:block':'display:none'"></writeLetter>
+            <shudongList :style="!show?'display:block':'display:none'"></shudongList>
         </div>
     </div>
 </template>
@@ -113,21 +114,22 @@
 <script>
     import letterNav from "@/components/letterNav/letterNav";
     import writeLetter from "@/views/IndexPage/writeLetter/writeLetter/writeLetter";
-    import shudong from "@/views/IndexPage/writeLetter/shudong/shudong";
-    import jiaonang from "@/views/IndexPage/writeLetter/jiaonang/jiaonang";
+    import shudongList from "@/views/IndexPage/writeLetter/shudongList/shudongList";
 
     export default {
         name: 'letterIndex',
 
         components: {
             letterNav: letterNav,
+            writeLetter: writeLetter,
+            shudongList: shudongList
         },
 
         data() {
             return {
                 title: '写点什么',
                 module: this.$route.name,
-                show: false
+                show: true
             }
         },
 
@@ -137,8 +139,12 @@
         },
 
         methods: {
-            test() {
-
+            changeModule(data) {
+                if (data.module === 'shudongList') {
+                    this.show = false
+                } else {
+                    this.show = true
+                }
             },
 
             route(module) {

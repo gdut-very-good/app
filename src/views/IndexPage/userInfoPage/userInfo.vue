@@ -146,7 +146,7 @@
 </template>
 
 <script>
-    import {mapState, mapGetters} from "vuex";
+    import {loginModules} from "@/utils/apiManager/loginApi";
 
     export default {
         name: 'userInfo',
@@ -173,14 +173,14 @@
                         imageUrl: 'http://printer.noerror.xyz/appImage/data.png'
                     },
                     {
-                        name: '设置',
-                        module: 'message',
-                        imageUrl: 'http://printer.noerror.xyz/appImage/set.png'
+                        name: '树洞管理',
+                        module: 'managerTree',
+                        imageUrl: 'http://printer.noerror.xyz/appImage/tree.png'
                     },
                     {
                         name: '注销',
-                        module: 'message',
-                        imageUrl: 'http://printer.noerror.xyz/appImage/set.png'
+                        module: '',
+                        imageUrl: 'http://printer.noerror.xyz/appImage/zhuxiao.png'
                     },
                 ]
             }

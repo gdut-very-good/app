@@ -56,7 +56,7 @@
                 navigatorItem: [
                     {
                         name: '写信',
-                        module: '/index/writeLetter',
+                        module: '/index/letterIndex',
                         imageUrl: 'http://printer.noerror.xyz/appImage/envelope.png'
                     },
                     {

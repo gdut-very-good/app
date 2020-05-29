@@ -63,10 +63,9 @@
         methods: {
             switchTitle (module) {
                 this.show = !this.show
-                this.$router.push({
-                    name: module
+                this.$emit('changeModule', {
+                    module: module
                 })
-                this.$emit('test')
             }
         }
     }

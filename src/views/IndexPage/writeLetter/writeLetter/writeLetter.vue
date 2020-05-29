@@ -127,4 +127,81 @@
 			}
 		}
 	}
+    import {letter} from "@/utils/apiManager/letterApi";
+    import {py} from '@/utils/pingyin/pinyin';
+    import {isNotNullTrim, checkNumber, moveArray} from "@/utils/utils";
+    import {loginModules} from "@/utils/apiManager/loginApi";
+    import user from "@/store/modules/user";
+    const PinyinMatch = require('pinyin-match');
+
+    export default {
+        name: 'writeLetter',
+
+        data() {
+            return {
+                //format {'group':, data: [{}]}
+                boomFriend: []
+            }
+        },
+
+        mounted() {
+            letter.getBoomFriend().then(res => {
+                if (res.code == 1) {
+                    this.boomFriend = this.reFormat(res.data.records)
+                }
+            })
+
+        },
+
+        methods: {
+            reFormat(data){
+                const newData = []
+                for (let i = 0, len = data.length; i < len ;i++) {
+                    //判断第一个字符是不是数字,或者是空
+                    let firstStr
+                    if (data[i].nickname === null) {
+                        firstStr = ['#']
+                    } else {
+                        firstStr = checkNumber(data[i].nickname.charAt(0)) ?
+                            ['#'] : py(data[i].nickname.charAt(0))
+                    }
+                    //查看一下有没有这个分组，但是注意一下下表是0的情况
+                    const has = this.hasGroup(firstStr[0], newData)
+                    //the array has not this str group
+                    if (has === 'none') {
+                        newData.push({
+                            group: firstStr[0],
+                            data: []
+                        })
+                        newData[newData.length-1].data.push(data[i])
+                    } else {
+                        newData[has].data.push(data[i])
+                    }
+                }
+                newData.sort((a, b) => {
+                    return (a.group + '').localeCompare(b.group + '')
+                })
+                moveArray(newData, [0], newData.length-1, 1)
+                return newData
+            },
+
+            hasGroup(str, arr) {
+                for (let i = 0, len = arr.length; i < len; i++) {
+                    if (arr[i].group === str) {
+                        return i
+                    }
+                }
+                return 'none'
+            },
+
+            jump(userId) {
+                this.$router.push({
+                    name: 'friendInfo',
+                    query: {
+                        userId: userId
+                    }
+                })
+            }
+        }
+    }
 </script>

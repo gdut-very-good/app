@@ -22,11 +22,6 @@
             margin: 0 auto;
         }
     }
-
-
-
-
-
 </style>
 
 <template>
@@ -41,28 +36,25 @@
 </template>
 
 <script>
+    import {letter} from "@/utils/apiManager/letterApi";
+
     export default {
         name: 'jiaonangList',
         data() {
             return {
-                list: [
-                    {
-                        title: '树洞标题',
-                        content: '我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操'
-                    },
-                    {
-                        title: '树洞标题',
-                        content: '我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操'
-                    },
-                    {
-                        title: '树洞标题',
-                        content: '我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操我真的操'
-                    },
-                ]
+                list: []
             }
         },
-        submit() {
-
+        mounted() {
+            this.getList()
+        },
+        methods: {
+            getList() {
+                letter.getHoleList().then(res => {
+                    console.log(res)
+                    this.list = res.data.records
+                })
+            }
         }
 
     }
