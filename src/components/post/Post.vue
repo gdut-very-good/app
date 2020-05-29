@@ -2,8 +2,8 @@
     <div class="wrapper PostView" @click="toPostView">
         <div class="content">{{content}}</div>
         <div class="box">
-            <p class="time">{{time}}</p>
-            <p class="reply">{{view}}</p>
+            <text class="time">{{time}}</text>
+            <text class="reply">{{view}}</text>
         </div>
     </div>
 

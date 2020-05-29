@@ -9,7 +9,7 @@
             <div class="container">
                 <div class="avatar-box">
                     <image :src="this.$store.default.state.imageBaseUrl + userInfo.photo" alt="" class="avatar"/>
-                    <p class="name">{{userInfo.username}}</p>
+                    <text class="name">{{userInfo.username}}</text>
                 </div>
                 <div class="content">
                     {{userInfo.signature}}
@@ -31,8 +31,8 @@
             <div class="rua">
                 <div class="top">
                     <div class="box">
-                        <span class="span" @click="ruaVisibility = false">×</span>
-                        <span class="span">发布动态</span>
+                        <text class="span" @click="ruaVisibility = false">×</text>
+                        <text class="span">发布动态</text>
                     </div>
                     <button class="button" @click="post">发布</button>
                 </div>

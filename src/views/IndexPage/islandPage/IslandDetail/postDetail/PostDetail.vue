@@ -5,7 +5,7 @@
                 <div class="left">
                     <div class="avatar-box">
                         <image :src="userInfo.photo" class="avatar"/>
-                        <p class="name">{{userInfo.username}}</p>
+                        <text class="name">{{userInfo.username}}</text>
                     </div>
                 </div>
                 <div class="right">
@@ -23,11 +23,11 @@
                 </div>
                 <div class="content">
                     <div class="top">
-                        <p class="name"></p>
+                        <text class="name"></text>
                         <button class="reply" @click="beReplyId = comment.replyId">回复</button>
                     </div>
                     <div class="bottom">
-                        <p>{{comment.content}}</p>
+                        <text>{{comment.content}}</text>
                     </div>
                 </div>
             </div>
@@ -39,8 +39,8 @@
             <div class="rua">
                 <div class="top">
                     <div class="box">
-                        <span class="span" @click="inputVisibility = true">×</span>
-                        <span class="span">发表评论</span>
+                        <text class="span" @click="inputVisibility = true">×</text>
+                        <text class="span">发表评论</text>
                     </div>
                     <button class="button" @click="post">发布</button>
                 </div>

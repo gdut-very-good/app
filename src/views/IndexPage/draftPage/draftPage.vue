@@ -5,9 +5,9 @@
             <div class="title">共{{draftData.length}}条草稿</div>
             <div class="body">
                 <div class="box" v-for="(draft, index) in draftData" :key="index">
-                    <p class="title">{{draft.paper}}</p>
-                    <p class="preview-content">{{draft.content}}</p>
-                    <p class="time">{{draft.sendTime}}</p>
+                    <text class="title">{{draft.paper}}</text>
+                    <text class="preview-content">{{draft.content}}</text>
+                    <text class="time">{{draft.sendTime}}</text>
                 </div>
             </div>
         </div>

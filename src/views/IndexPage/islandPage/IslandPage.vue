@@ -10,8 +10,8 @@
                 <image :src="this.$store.default.state.imageBaseUrl + myInfo.photo" class="avatar"></image>
             </div>
             <div class="rua-box" @click="toIsland(myInfo.userId)">
-                <p class="first">我的海岛</p>
-                <p class="second">{{myInfo.signature}}</p>
+                <text class="first">我的海岛</text>
+                <text class="second">{{myInfo.signature}}</text>
             </div>
         </div>
         <div class="container">
