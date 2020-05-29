@@ -1,9 +1,8 @@
 .DS_Store
 node_modules
 /dist
-/platforms
-/platforms
 oss.config.js
+/platforms
 
 # local env files
 .env.local
