@@ -1,5 +1,10 @@
 <style scoped lang="less">
     @import "../../../../utils/css/mixin";
+
+    input {
+      outline: none;
+    }
+
     .shudong-second-title {
         @height: 1.8rem;
         height: @height;
@@ -35,23 +40,60 @@
     <div>
         <div class="writeLetter-title">
             创建树洞
-            <image class="save-image" src="http://printer.noerror.xyz/appImage/gou.png" @click="submit"></image>
+            <image
+                    class="save-image" src="http://printer.noerror.xyz/appImage/gou.png"
+                    @click="submit">
+            </image>
         </div>
         <div class="bottom-con">
-            <div class="shudong-second-title">树洞标题</div>
+            <input class="shudong-second-title"
+                   type="text"
+                   placeholder="树洞标题"
+                   v-model="title"
+            >
             <div class="text-area">
-                <textarea placeholder="写下你想对树洞大人说的吧..." id="" cols="30" rows="10"></textarea>
+                <textarea
+                        placeholder="写下你想对树洞大人说的吧..."
+                        id=""
+                        cols="30"
+                        rows="10"
+                        v-model="content"
+                >
+                </textarea>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+    import {letter} from "@/utils/apiManager/letterApi";
+    import {errorCode} from "@/utils/errorCode/errorCode";
 
     export default {
         name: 'shudong',
-        submit() {
 
+        data() {
+            return {
+                title: '',
+                content: ''
+            }
+        },
+
+        methods: {
+            submit() {
+                const data = {
+                    "content": this.content,
+                    "title": this.title
+                }
+                letter.addTree(data).then(res => {
+                    console.log(res)
+                    if (res.code == 1) {
+
+                    } else {
+                        errorCode()
+                    }
+                })
+            }
         }
 
     }

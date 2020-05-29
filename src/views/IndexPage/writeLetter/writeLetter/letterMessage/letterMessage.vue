@@ -71,12 +71,12 @@
             <div  v-for="item in letterList" style="padding-top: 0.5rem">
                 <div class="letter-card">
                     <image class="stamp"></image>
-                    <div class="letter-title">{{item.paper}}</div>
+                    <div class="letter-title">{{item.header}}</div>
                     <div class="letter-content">
                         {{item.content}}
                     </div>
                     <div class="receiver-con">
-                        <div class="receiver-name">tom</div>
+                        <div class="receiver-name">{{item.receiverId.nickname}}</div>
                         <div class="receiver-name" style="text-align: right">{{item.sendTime}}</div>
                     </div>
                 </div>
@@ -101,6 +101,17 @@
         },
 
         mounted() {
+            // let data = {
+            //             username: 'huange7',
+            //             password: '123456'
+            //         }
+            //         loginModules.login(data).then(res => {
+            //
+            //             if (res.code == 1) {
+            //
+            //             }
+            //             alert(res.message)
+            //         })
             this.getLetterInfo()
 
         },
@@ -110,7 +121,7 @@
                 letter.getFriendLetter(1).then(res => {
                     if (res.code == 1) {
                         this.letterList = res.data.records
-                        // this.reformat()
+                        this.reformat()
                     } else {
                         errorCode(res.code)
                     }
@@ -122,6 +133,9 @@
             reformat() {
                 for(let i = 0; i < this.letterList.length; i++) {
                     this.letterList[i].stampId = matchId(this.letterList[i].stampId)
+                    letter.getSingleInfo(this.letterList[i].receiverId).then(res => {
+                        this.letterList[i].receiverId = res.data
+                    })
                 }
             }
         }

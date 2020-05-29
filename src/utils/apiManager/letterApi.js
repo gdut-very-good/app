@@ -14,6 +14,18 @@ class LetterApi extends Request{
     async getFriendLetter(data) {
         return getResult(await this.get('/letter/?friendId=' + data))
     }
+    //用户新增加树洞
+    async addTree(data) {
+        return getResult(await this.post('/tree-hole', data))
+    }
+    //获取树洞列表
+    async getHoleList() {
+        return getResult(await this.get('/tree-hole'))
+    }
+    //写信
+    async submitLetter(data) {
+        return getResult(await this.post('/letter', data))
+    }
 }
 
 export const letter = new LetterApi()
