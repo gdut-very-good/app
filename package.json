@@ -29,7 +29,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "babel-plugin-transform-runtime": "^6.23.0",
     "jquery": "^3.5.1",
     "phantom-limb": "0.0.1",
